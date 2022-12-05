@@ -19,12 +19,12 @@ def get_nbr_of_paths(graph, start, end):
     return nbr_of_paths
 
 
-with open('data.in') as f:
+with open("data.in") as f:
     lines = f.read().splitlines()
 
 graph = {}
 for line in lines:
-    n1, n2 = line.split('-')
+    n1, n2 = line.split("-")
     if n1 not in graph:
         graph[n1] = [n2]
     else:
@@ -34,4 +34,4 @@ for line in lines:
     else:
         graph[n2].append(n1)
 
-print(get_nbr_of_paths(graph, 'start', 'end'))
+print(get_nbr_of_paths(graph, "start", "end"))

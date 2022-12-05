@@ -1,14 +1,25 @@
 def print_matrix(matrix):
     for row in matrix:
-        print(''.join(map(str, row)))
+        print("".join(map(str, row)))
     print()
 
 
 def get_neighbors(a, b, matrix):
-  d = {(i, c):matrix[i][c] for i in range(len(matrix)) for c in range(len(matrix[0]))}
-  return [i for i in
-    [(a+1, b+1), (a-1, b-1), (a, b+1), (a+1, b), (a-1, b+1), (a-1, b), (a, b-1), (a+1, b-1)]
-    if d.get(i)]
+    d = {(i, c): matrix[i][c] for i in range(len(matrix)) for c in range(len(matrix[0]))}
+    return [
+        i
+        for i in [
+            (a + 1, b + 1),
+            (a - 1, b - 1),
+            (a, b + 1),
+            (a + 1, b),
+            (a - 1, b + 1),
+            (a - 1, b),
+            (a, b - 1),
+            (a + 1, b - 1),
+        ]
+        if d.get(i)
+    ]
 
 
 def flash_octopus(i, j, matrix, flashed):
@@ -23,15 +34,15 @@ def flash_octopus(i, j, matrix, flashed):
             flash_octopus(i, j, matrix, flashed)
 
 
-with open('data.in') as f:
+with open("data.in") as f:
     lines = f.read().splitlines()
 
 matrix = [[int(oct) for oct in line] for line in lines]
 
 NBR_STEPS = 100
 result = 0
-for step in range(1, NBR_STEPS+1):
-    matrix = [[oct+1 for oct in row] for row in matrix]
+for step in range(1, NBR_STEPS + 1):
+    matrix = [[oct + 1 for oct in row] for row in matrix]
     flashed = set()
     for i in range(len(matrix)):
         for j in range(len(matrix[0])):
@@ -40,5 +51,5 @@ for step in range(1, NBR_STEPS+1):
     for i, j in flashed:
         result += 1
         matrix[i][j] = 0
-    print(f'STEP: {step}. Number of flashes: {result}')
+    print(f"STEP: {step}. Number of flashes: {result}")
     # print_matrix(matrix)

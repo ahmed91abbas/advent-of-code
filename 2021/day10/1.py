@@ -1,19 +1,10 @@
-with open('data.in') as f:
+with open("data.in") as f:
     lines = f.read().splitlines()
 
-closing_scores = {
-    ')': 3,
-    ']': 57,
-    '}': 1197,
-    '>': 25137
-}
+closing_scores = {")": 3, "]": 57, "}": 1197, ">": 25137}
 
-opening_syntax = {
-    '(': ')',
-    '[': ']',
-    '{': '}',
-    '<': '>'
-}
+opening_syntax = {"(": ")", "[": "]", "{": "}", "<": ">"}
+
 
 def get_first_illegal_char(line):
     opening = list()
@@ -24,7 +15,8 @@ def get_first_illegal_char(line):
             last = opening.pop()
             if c != opening_syntax[last]:
                 return c
-    return ''
+    return ""
+
 
 result = 0
 for line in lines:

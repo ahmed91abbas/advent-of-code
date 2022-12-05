@@ -1,13 +1,14 @@
 def print_diagram(diagram):
     for y in range(10):
-        row = ''
+        row = ""
         for x in range(10):
-            key = str((x,y))
+            key = str((x, y))
             if key in diagram:
                 row += str(diagram[key])
             else:
-                row += '.'
+                row += "."
         print(row)
+
 
 def add_overlaps(diagram, start, finish, x=None, y=None):
     while finish >= start:
@@ -21,6 +22,7 @@ def add_overlaps(diagram, start, finish, x=None, y=None):
             diagram[key] = 1
         finish -= 1
 
+
 def add_diagonal_left_to_right(diagram, s1, f1, s2, f2):
     while f1 >= s1 and f2 >= s2:
         key = str((f1, f2))
@@ -30,6 +32,7 @@ def add_diagonal_left_to_right(diagram, s1, f1, s2, f2):
             diagram[key] = 1
         f1 -= 1
         f2 -= 1
+
 
 def add_diagonal_right_to_left(diagram, s1, f1, s2, f2):
     while f1 >= s1 and f2 <= s2:
@@ -41,14 +44,15 @@ def add_diagonal_right_to_left(diagram, s1, f1, s2, f2):
         f1 -= 1
         f2 += 1
 
-with open('data.in') as f:
+
+with open("data.in") as f:
     lines = f.read().splitlines()
 
 diagram = dict()
 for line in lines:
-    p1, p2 = line.split(' -> ')
-    x1, y1 = map(int, p1.split(','))
-    x2, y2 = map(int, p2.split(','))
+    p1, p2 = line.split(" -> ")
+    x1, y1 = map(int, p1.split(","))
+    x2, y2 = map(int, p2.split(","))
     if y1 == y2:
         add_overlaps(diagram, x1, x2, y=y1)
         add_overlaps(diagram, x2, x1, y=y1)

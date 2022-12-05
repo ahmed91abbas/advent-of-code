@@ -1,4 +1,4 @@
-with open('data.in') as f:
+with open("data.in") as f:
     lines = f.read().splitlines()
     result = 0
     prev = int(lines[0])

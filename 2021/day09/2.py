@@ -2,16 +2,16 @@ def get_adjacent_indices(i, j, matrix):
     indices = []
     # up
     if i > 0:
-        indices.append((i-1, j))
+        indices.append((i - 1, j))
     # down
     if i < len(matrix) - 1:
-        indices.append((i+1, j))
+        indices.append((i + 1, j))
     # left
     if j > 0:
-        indices.append((i, j-1))
+        indices.append((i, j - 1))
     # right
     if j < len(matrix[i]) - 1:
-        indices.append((i, j+1))
+        indices.append((i, j + 1))
     return [x for x in indices if matrix[x[0]][x[1]] != 9]
 
 
@@ -27,7 +27,7 @@ def get_basin_size(i, j, matrix, visited):
     return size
 
 
-with open('data.in') as f:
+with open("data.in") as f:
     lines = f.read().splitlines()
 
 matrix = []

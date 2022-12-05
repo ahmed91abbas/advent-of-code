@@ -1,7 +1,7 @@
-with open('data.in') as f:
+with open("data.in") as f:
     lines = f.read().splitlines()
 
-positions = list(map(int, lines[0].split(',')))
+positions = list(map(int, lines[0].split(",")))
 min_cost = None
 res_pos = 0
 for i in range(max(positions) + 1):
@@ -12,4 +12,4 @@ for i in range(max(positions) + 1):
         min_cost = current_cost
         res_pos = i
 
-print('res_pos', res_pos, 'fuel', min_cost)
+print("res_pos", res_pos, "fuel", min_cost)

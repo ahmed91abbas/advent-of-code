@@ -1,19 +1,10 @@
-with open('data.in') as f:
+with open("data.in") as f:
     lines = f.read().splitlines()
 
-closing_scores = {
-    ')': 1,
-    ']': 2,
-    '}': 3,
-    '>': 4
-}
+closing_scores = {")": 1, "]": 2, "}": 3, ">": 4}
 
-opening_syntax = {
-    '(': ')',
-    '[': ']',
-    '{': '}',
-    '<': '>'
-}
+opening_syntax = {"(": ")", "[": "]", "{": "}", "<": ">"}
+
 
 def is_valid(line):
     opening = list()
@@ -26,8 +17,9 @@ def is_valid(line):
                 return False
     return True
 
+
 def get_missing_syntax(line):
-    missing = ''
+    missing = ""
     opening = list()
     for c in line:
         if c in opening_syntax:
@@ -39,11 +31,13 @@ def get_missing_syntax(line):
         missing += opening_syntax[last]
     return missing
 
+
 def get_score(line):
     score = 0
     for c in line:
         score = score * 5 + closing_scores[c]
     return score
+
 
 scores = list()
 valid_lines = [line for line in lines if is_valid(line)]
@@ -51,4 +45,4 @@ for line in valid_lines:
     missing_syntax = get_missing_syntax(line)
     scores.append(get_score(missing_syntax))
 
-print(sorted(scores)[len(scores)//2])
+print(sorted(scores)[len(scores) // 2])

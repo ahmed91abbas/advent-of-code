@@ -2,20 +2,20 @@ def get_adjacent_locations(i, j, matrix):
     locations = []
     # up
     if i > 0:
-        locations.append(matrix[i-1][j])
+        locations.append(matrix[i - 1][j])
     # down
     if i < len(matrix) - 1:
-        locations.append(matrix[i+1][j])
+        locations.append(matrix[i + 1][j])
     # left
     if j > 0:
-        locations.append(matrix[i][j-1])
+        locations.append(matrix[i][j - 1])
     # right
     if j < len(matrix[i]) - 1:
-        locations.append(matrix[i][j+1])
+        locations.append(matrix[i][j + 1])
     return locations
 
 
-with open('data.in') as f:
+with open("data.in") as f:
     lines = f.read().splitlines()
 
 matrix = []
@@ -30,5 +30,5 @@ for i, row in enumerate(matrix):
             low_points.append(col)
 
 print(low_points)
-result = sum([x+1 for x in low_points])
+result = sum([x + 1 for x in low_points])
 print(result)
